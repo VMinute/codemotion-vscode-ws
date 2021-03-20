@@ -19,3 +19,7 @@ yo code
 ```
 
 The sample code is in Typescript.
+
+## Step 2
+
+In the second step we see how to get basic input from  users and show messages to them.

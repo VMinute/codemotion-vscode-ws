@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:codemotion2021ws.helloWorld"
+		"onCommand:codemotion2021ws.helloWorld",
+		"onCommand:codemotion2021ws.testBasicUI"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +19,10 @@
 			{
 				"command": "codemotion2021ws.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "codemotion2021ws.testBasicUI",
+				"title": "Test basic UI"
 			}
 		]
 	},
