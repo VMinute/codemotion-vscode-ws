@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as quickpick from './quickpick';
 
 async function testBasicUI() {
 	var name=await vscode.window.showInputBox({
@@ -8,6 +9,49 @@ async function testBasicUI() {
 	});
 
 	await vscode.window.showInformationMessage(`Hello ${name}!`);
+}
+
+var outputChannel : vscode.OutputChannel = vscode.window.createOutputChannel('Codemotion 2021');
+
+async function testAdvancedUI() {
+	// this is a sample of how to NOT implement password check :)
+	var password=await vscode.window.showInputBox({
+		prompt: 'Please insert your password',
+		password: true,
+		ignoreFocusOut: true,
+		validateInput: (value: string) => {
+			if (value==='1234') {
+				return undefined;
+			}
+			return `${value} is not the right password!`;
+		}
+	});
+
+	var response = await vscode.window.showWarningMessage('Do you want to continue?','yes','no');
+
+	if (response==='no') {
+		vscode.window.showInformationMessage('We will continue anyway!');
+	}
+	
+	var element=await vscode.window.showQuickPick(['one', 'two', 'three']);
+
+	var complexelement=await quickpick.showQuickPick();
+
+	if (complexelement!==undefined) {
+		outputChannel.appendLine(`You selected item ${complexelement.label}`);
+		outputChannel.show();
+	}
+
+	var inputbox=vscode.window.createInputBox();
+
+	inputbox.prompt='Insert a value';
+	inputbox.title='My input box';
+	inputbox.buttons=[
+		{ iconPath: new vscode.ThemeIcon('bug'), tooltip: 'bug'},
+		{ iconPath: new vscode.ThemeIcon('gear'), tooltip: 'gear'}
+	];
+	inputbox.onDidTriggerButton(button => inputbox.value=button.tooltip!);
+	inputbox.onDidAccept( () => outputChannel.appendLine(inputbox.value));
 }
 
 // this method is called when your extension is activated
@@ -32,6 +76,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('codemotion2021ws.testBasicUI',testBasicUI)
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('codemotion2021ws.testAdvancedUI',testAdvancedUI)
 	);
 }
 

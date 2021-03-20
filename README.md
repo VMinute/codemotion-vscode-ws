@@ -23,3 +23,7 @@ The sample code is in Typescript.
 ## Step 2
 
 In the second step we see how to get basic input from  users and show messages to them.
+
+## Step 3
+
+In the third step we will see more complex way to collect user input.
