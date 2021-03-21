@@ -29,8 +29,36 @@
 			{
 				"command": "codemotion2021ws.testAdvancedUI",
 				"title": "Test advanced UI"
+			},
+			{
+				"command": "codemotion2021ws.treeViewTitleCommand",
+				"title": "Title Command",
+                "icon": {
+                    "light": "media/light/bell.svg",
+                    "dark": "media/dark/bell.svg"
+                }
+			},
+			{
+				"command": "codemotion2021ws.treeViewElementCommand",
+				"title": "Element Command",
+				"group": "navigation"
 			}
 		],
+		"menus": {
+			"view/title": [
+				{
+					"command":"codemotion2021ws.treeViewTitleCommand",
+					"when": "view==codemotion2021ws.uiview",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command":"codemotion2021ws.treeViewElementCommand",
+					"when": "view==codemotion2021ws.uiview && viewItem == even"
+				}
+			]
+		},
         "viewsContainers": {
             "activitybar": [
                 {

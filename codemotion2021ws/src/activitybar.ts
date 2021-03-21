@@ -1,6 +1,14 @@
 import * as vscode from 'vscode';
 import * as numbertowords from 'number-to-words';
 
+export async function treeViewTitleCommand() {
+    await vscode.window.showInformationMessage('You clicked on the command!');
+}
+
+export async function treeViewElementCommand(value: number) {
+    await vscode.window.showInformationMessage('This is an even number!');
+}
+
 // we create 1k nodes on 3 levels:
 // 0
 //  0
@@ -20,7 +28,15 @@ export class DummyDataProvider implements vscode.TreeDataProvider<number> {
                 title: "info",
                 command: "ui-demo.showInfo",
                 arguments: [element]
-            }
+            },
+        };
+
+        if (element %2 === 0) {
+            item.contextValue="even";
+        }
+        else
+        {
+            item.contextValue="odd";
         }
 
         // only the top two levels can be expanded, first one is expanded, 2nd collapsed

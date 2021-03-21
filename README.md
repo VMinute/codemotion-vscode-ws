@@ -31,3 +31,7 @@ In the third step we will see more complex way to collect user input.
 ## Step 4
 
 In this step we will add an ActivityBar and a tree view.
+
+## Step 5
+
+Here we add commands to our ActivityBar

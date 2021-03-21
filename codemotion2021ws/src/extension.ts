@@ -86,6 +86,14 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.window.registerTreeDataProvider("codemotion2021ws.uiview", new activitybar.DummyDataProvider())
 	);
+	
+	context.subscriptions.push(
+		vscode.commands.registerCommand('codemotion2021ws.treeViewTitleCommand',activitybar.treeViewTitleCommand)
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('codemotion2021ws.treeViewElementCommand',activitybar.treeViewElementCommand)
+	);
 }
 
 // this method is called when your extension is deactivated
