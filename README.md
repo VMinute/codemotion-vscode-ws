@@ -39,3 +39,7 @@ Here we add commands to our ActivityBar
 ## Step 6
 
 In this step we will add a StatusBarItem
+
+## Step 7
+
+We will see how to manage events generated from the editor
