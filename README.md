@@ -35,3 +35,7 @@ In this step we will add an ActivityBar and a tree view.
 ## Step 5
 
 Here we add commands to our ActivityBar
+
+## Step 6
+
+In this step we will add a StatusBarItem

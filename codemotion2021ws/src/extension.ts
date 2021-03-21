@@ -4,6 +4,12 @@ import * as vscode from 'vscode';
 import * as quickpick from './quickpick';
 import * as activitybar from './activitybar';
 
+var statusBarItem=vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+
+async function statusBarCommand() {
+	await vscode.window.showInformationMessage('You clicked on the status bar!');
+}
+
 async function testBasicUI() {
 	var name=await vscode.window.showInputBox({
 		prompt: 'Insert your name'
@@ -94,6 +100,14 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('codemotion2021ws.treeViewElementCommand',activitybar.treeViewElementCommand)
 	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('codemotion2021ws.statusBarCommand',statusBarCommand)
+	);
+
+	statusBarItem.command='codemotion2021ws.statusBarCommand';
+	statusBarItem.text='$(star) codemotion2021';
+	statusBarItem.show();
 }
 
 // this method is called when your extension is deactivated
