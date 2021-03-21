@@ -27,3 +27,7 @@ In the second step we see how to get basic input from  users and show messages t
 ## Step 3
 
 In the third step we will see more complex way to collect user input.
+
+## Step 4
+
+In this step we will add an ActivityBar and a tree view.

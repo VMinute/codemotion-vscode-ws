@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as quickpick from './quickpick';
+import * as activitybar from './activitybar';
 
 async function testBasicUI() {
 	var name=await vscode.window.showInputBox({
@@ -80,6 +81,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('codemotion2021ws.testAdvancedUI',testAdvancedUI)
+	);
+
+	context.subscriptions.push(
+		vscode.window.registerTreeDataProvider("codemotion2021ws.uiview", new activitybar.DummyDataProvider())
 	);
 }
 

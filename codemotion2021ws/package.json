@@ -12,7 +12,8 @@
 	"activationEvents": [
 		"onCommand:codemotion2021ws.helloWorld",
 		"onCommand:codemotion2021ws.testBasicUI",
-		"onCommand:codemotion2021ws.testAdvancedUI"
+		"onCommand:codemotion2021ws.testAdvancedUI",
+		"onView:codemotion2021ws.uiview"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -29,7 +30,24 @@
 				"command": "codemotion2021ws.testAdvancedUI",
 				"title": "Test advanced UI"
 			}
-		]
+		],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "codemotion2021ws-bar",
+                    "title": "Codemotion 2021",
+                    "icon": "media/icon.svg"
+                }
+            ]
+        },
+		"views": {
+			"codemotion2021ws-bar": [
+				{
+					"id": "codemotion2021ws.uiview",
+					"name": "Sample UI View"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -51,5 +69,9 @@
 		"mocha": "^8.2.1",
 		"typescript": "^4.1.3",
 		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"@types/number-to-words": "^1.2.0",
+		"number-to-words": "^1.2.4"
 	}
 }
