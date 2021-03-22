@@ -75,6 +75,16 @@
 					"name": "Sample UI View"
 				}
 			]
+		},
+		"configuration": {
+			"title": "Codemotion 2021 Workshop",
+			"properties": {
+				"codemotion2021ws.textToHighlight": {
+					"type": "string",
+					"default": "ciao",
+					"description": "Specifies the string that should be highlighted when saving text documents."
+				}
+			}
 		}
 	},
 	"scripts": {

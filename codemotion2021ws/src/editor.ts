@@ -17,8 +17,18 @@ export function onTextSave(document:vscode.TextDocument) {
 
     const editor=editors[0];
 
+    decorate(editor);
+}
+
+function decorate(editor:vscode.TextEditor) {
+    const configuration=vscode.workspace.getConfiguration("codemotion2021ws");
+    const textToHighlight:string | undefined=configuration.get("textToHighlight");
+
+    if (textToHighlight===undefined) {
+        return;
+    }
+
     var text=editor.document.getText();
-    var textToHighlight='ciao';
     var regexp=new RegExp(textToHighlight);
     var decorations : vscode.DecorationOptions[] = [];
     var currentLine = 0;
@@ -45,4 +55,17 @@ export function onTextSave(document:vscode.TextDocument) {
     });
 
     editor.setDecorations(decoration,decorations);
+}
+
+export function updateVisibleEditors() {
+    vscode.window.visibleTextEditors.forEach(
+        editor => decorate(editor)
+    );   
+}
+
+export function onConfigurationChange(event: vscode.ConfigurationChangeEvent) {
+
+    if (event.affectsConfiguration('codemotion2021ws')) {
+        updateVisibleEditors();
+    }
 }

@@ -118,7 +118,17 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.workspace.onDidSaveTextDocument(editor.onTextSave)
 	);
+
+	context.subscriptions.push(
+		vscode.workspace.onDidChangeConfiguration(editor.onConfigurationChange)
+	);
+
+	context.subscriptions.push(
+		vscode.window.onDidChangeVisibleTextEditors( event => editor.updateVisibleEditors())
+	);
 }
+
+	
 
 // this method is called when your extension is deactivated
 export function deactivate() {}

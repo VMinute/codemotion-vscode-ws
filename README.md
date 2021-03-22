@@ -47,3 +47,7 @@ We will see how to manage events generated from the editor
 ## Step 8
 
 Advanced event management and decorators
+
+## Step 9
+
+Let's add some configuration parameters!
