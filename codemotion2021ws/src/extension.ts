@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import * as quickpick from './quickpick';
 import * as activitybar from './activitybar';
+import * as editor from './editor';
 
 var statusBarItem=vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
@@ -109,9 +110,14 @@ export function activate(context: vscode.ExtensionContext) {
 	statusBarItem.text='$(star) codemotion2021';
 	statusBarItem.show();
 
-	vscode.workspace.onDidOpenTextDocument( document => {
+	context.subscriptions.push(
+		vscode.workspace.onDidOpenTextDocument( document => {
 		statusBarItem.text=`$(star) ${vscode.workspace.textDocuments.length}`;
-	});
+	}));
+
+	context.subscriptions.push(
+		vscode.workspace.onDidSaveTextDocument(editor.onTextSave)
+	);
 }
 
 // this method is called when your extension is deactivated

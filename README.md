@@ -43,3 +43,7 @@ In this step we will add a StatusBarItem
 ## Step 7
 
 We will see how to manage events generated from the editor
+
+## Step 8
+
+Advanced event management and decorators
