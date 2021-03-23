@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import * as quickpick from './quickpick';
 import * as activitybar from './activitybar';
 import * as editor from './editor';
+import * as monicelli from './monicelli';
 
 var statusBarItem=vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
@@ -147,6 +148,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.window.onDidChangeVisibleTextEditors( event => editor.updateVisibleEditors())
 	);
+
+	context.subscriptions.push(
+		vscode.tasks.registerTaskProvider("monicelli", new monicelli.MonicelliTaskProvider(context))
+	);	
 }
 
 	

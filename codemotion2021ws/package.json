@@ -14,8 +14,10 @@
 		"onCommand:codemotion2021ws.testBasicUI",
 		"onCommand:codemotion2021ws.testAdvancedUI",
 		"onCommand:codemotion2021ws.createTerminal",
-		"onView:codemotion2021ws.uiview",
-		"onStartupFinished"
+		"onView:codemotion2021ws.uiview",		
+		"onStartupFinished",
+		"onLanguage:monicelli",
+        "workspaceContains:**/*.mc"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -90,7 +92,32 @@
 					"description": "Specifies the string that should be highlighted when saving text documents."
 				}
 			}
-		}
+		},
+		"languages": [
+            {
+                "id": "monicelli",
+                "aliases": [
+                    "Monicelli",
+                    "monicelli"
+                ],
+                "extensions": [
+                    ".mc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "monicelli",
+                "scopeName": "source.monicelli",
+                "path": "./syntaxes/monicelli.tmLanguage.json"
+            }
+        ],
+        "taskDefinitions": [
+            {
+                "type": "monicelli"
+            }
+        ]		
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
