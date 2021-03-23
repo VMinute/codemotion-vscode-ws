@@ -19,6 +19,23 @@ async function testBasicUI() {
 	await vscode.window.showInformationMessage(`Hello ${name}!`);
 }
 
+async function createTerminal() {
+	var to:vscode.TerminalOptions = {
+		name: "Codemotion 2021",
+		shellArgs: []		
+	};
+
+	if (process.platform === "win32") {
+		to.shellPath="cmd.exe";
+	} else {
+		to.shellPath="bash";
+	}
+	
+	var terminal = vscode.window.createTerminal(to);
+
+	terminal.show();
+}
+
 var outputChannel : vscode.OutputChannel = vscode.window.createOutputChannel('Codemotion 2021');
 
 async function testAdvancedUI() {
@@ -88,6 +105,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('codemotion2021ws.testAdvancedUI',testAdvancedUI)
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('codemotion2021ws.createTerminal',createTerminal)
 	);
 
 	context.subscriptions.push(

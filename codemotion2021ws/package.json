@@ -13,6 +13,7 @@
 		"onCommand:codemotion2021ws.helloWorld",
 		"onCommand:codemotion2021ws.testBasicUI",
 		"onCommand:codemotion2021ws.testAdvancedUI",
+		"onCommand:codemotion2021ws.createTerminal",
 		"onView:codemotion2021ws.uiview",
 		"onStartupFinished"
 	],
@@ -30,6 +31,10 @@
 			{
 				"command": "codemotion2021ws.testAdvancedUI",
 				"title": "Test advanced UI"
+			},
+			{
+				"command": "codemotion2021ws.createTerminal",
+				"title": "Create a new terminal"
 			},
 			{
 				"command": "codemotion2021ws.treeViewTitleCommand",

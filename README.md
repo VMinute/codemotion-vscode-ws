@@ -51,3 +51,7 @@ Advanced event management and decorators
 ## Step 9
 
 Let's add some configuration parameters!
+
+## Step 10 
+
+Terminals
